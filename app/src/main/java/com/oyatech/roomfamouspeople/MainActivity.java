@@ -8,19 +8,24 @@ import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 
 import android.view.View;
 
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
-import android.widget.EditText;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+    RecyclerView mRecyclerView;
 
-    EditText firstName,secondName,email;
-    Button saveUser;
+
     FloatingActionButton fab;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,11 +34,6 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         fab = findViewById(R.id.fab);
-        firstName = findViewById(R.id.tvFirstName);
-        secondName = findViewById(R.id.tvSecondName);
-        email = findViewById(R.id.tvEmail);
-        saveUser = findViewById(R.id.btnUser);
-
 
 
         fab.setOnClickListener(new View.OnClickListener() {

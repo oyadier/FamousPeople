@@ -8,8 +8,14 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class FirstFragment extends Fragment {
+RecyclerView mRecyclerView;
 
     @Override
     public View onCreateView(
@@ -17,7 +23,22 @@ public class FirstFragment extends Fragment {
             Bundle savedInstanceState
     ) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_first, container, false);
+        View view =  inflater.inflate(R.layout.fragment_first, container, false);
+
+        mRecyclerView = view.findViewById(R.id.recycleview);
+        List<String> user;
+
+        user = new ArrayList<>();
+        for (int i = 1; i <= 30; i++) {
+
+            user.add(i + " Robert");
+        }
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        RecyclerView.Adapter adapter = new FamousRecycleAdapter(user);
+        mRecyclerView.setAdapter(adapter);
+        return view;
+
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
