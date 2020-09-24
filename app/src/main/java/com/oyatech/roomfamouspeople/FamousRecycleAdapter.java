@@ -13,9 +13,9 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder;
 import java.util.List;
 
 public class FamousRecycleAdapter extends RecyclerView.Adapter<FamousRecycleAdapter.FamousViewHolder> {
-    List<String> users ;
+    List<Users> users ;
 
-    public FamousRecycleAdapter(List<String> pUsers) {
+    public FamousRecycleAdapter(List<Users> pUsers) {
         users = pUsers;
     }
 
@@ -29,7 +29,9 @@ public class FamousRecycleAdapter extends RecyclerView.Adapter<FamousRecycleAdap
 
     @Override
     public void onBindViewHolder(@NonNull FamousRecycleAdapter.FamousViewHolder holder, int position) {
-        holder.firstName.setText(users.get(position));
+        holder.firstName.setText(users.get(position).getFirstName());
+        holder.secondName.setText(users.get(position).getSecondName());
+        holder.email.setText(users.get(position).getEmail());
 
     }
 
@@ -42,7 +44,9 @@ public class FamousRecycleAdapter extends RecyclerView.Adapter<FamousRecycleAdap
     public     TextView firstName,secondName,email;
         public FamousViewHolder(@NonNull View itemView) {
             super(itemView);
-            firstName = itemView.findViewById(R.id.listText);
+            firstName = itemView.findViewById(R.id.firstName);
+            secondName = itemView.findViewById(R.id.lastName);
+            email = itemView.findViewById(R.id.email);
         }
     }
 }

@@ -19,7 +19,6 @@ public class AddUser extends AppCompatActivity {
         setContentView(R.layout.activity_add_use);
         this.setTitle("New User");
 
-
         firstName = findViewById(R.id.tvFirstName);
         secondName = findViewById(R.id.tvSecondName);
         email = findViewById(R.id.tvEmail);

@@ -26,12 +26,12 @@ RecyclerView mRecyclerView;
         View view =  inflater.inflate(R.layout.fragment_first, container, false);
 
         mRecyclerView = view.findViewById(R.id.recycleview);
-        List<String> user;
+        List<Users> user;
 
         user = new ArrayList<>();
         for (int i = 1; i <= 30; i++) {
 
-            user.add(i + " Robert");
+            user.add(new Users(i,"Robert","Oyaier","oyadevelop@gmail.com"));
         }
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
