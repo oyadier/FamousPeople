@@ -1,5 +1,6 @@
 package com.oyatech.roomfamouspeople;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -12,9 +13,14 @@ import android.view.View;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
 
+    EditText firstName,secondName,email;
+    Button saveUser;
+    FloatingActionButton fab;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,14 +28,21 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = findViewById(R.id.fab);
+        fab = findViewById(R.id.fab);
+        firstName = findViewById(R.id.tvFirstName);
+        secondName = findViewById(R.id.tvSecondName);
+        email = findViewById(R.id.tvEmail);
+        saveUser = findViewById(R.id.btnUser);
+
+
+
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, AddUser.class));
             }
         });
+
     }
 
     @Override
