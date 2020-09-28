@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.room.Room;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,14 +29,17 @@ RecyclerView mRecyclerView;
         mRecyclerView = view.findViewById(R.id.recycleview);
         List<Users> user;
 
-        user = new ArrayList<>();
-        for (int i = 1; i <= 30; i++) {
-
-            user.add(new Users(i,"Robert","Oyaier","oyadevelop@gmail.com"));
-        }
+        AppDatabase appDatabase = Room.databaseBuilder(getContext(),AppDatabase.class,"production")
+                .allowMainThreadQueries()
+                .build();
+        //Calling the display method onto the recycle view
+      user =   appDatabase.mUserDao().getQueryDisplay();
+      //setting the layoutManager for recycleView
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
+        //Creating the adapter
         RecyclerView.Adapter adapter = new FamousRecycleAdapter(user);
+        //Setting recycleView adapter
         mRecyclerView.setAdapter(adapter);
         return view;
 

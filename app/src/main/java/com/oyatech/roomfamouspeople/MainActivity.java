@@ -27,6 +27,11 @@ public class MainActivity extends AppCompatActivity {
     FloatingActionButton fab;
 
     @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -42,6 +47,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, AddUser.class));
             }
         });
+
+
 
     }
 

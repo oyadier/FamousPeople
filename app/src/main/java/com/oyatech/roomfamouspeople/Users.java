@@ -9,16 +9,18 @@ import com.google.android.material.shape.MaterialShapeDrawable;
 @Entity
 public class Users {
     @PrimaryKey (autoGenerate = true)
-    private int id ;
+    public int id ;
     @ColumnInfo(name = "first_name")
-    private String firstName;
+    public String firstName;
     @ColumnInfo(name = "second_name")
-    private String secondName;
+    public String secondName;
     @ColumnInfo(name = "email")
-    private String email;
+    public String email;
 
-    public Users(int pId, String pFirstName, String pSecondName, String pEmail) {
-        id = pId;
+    public Users() {
+    }
+
+    public Users(String pFirstName, String pSecondName, String pEmail) {
         firstName = pFirstName;
         secondName = pSecondName;
         email = pEmail;
