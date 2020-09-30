@@ -10,13 +10,15 @@ import java.util.List;
 //An interface for all queries
 @Dao
 public interface UserDao {
-    @Query("SELECT * FROM Users Limit 1")
+   // @Query("SELECT * FROM Users Limit 1")
+    @Query("SELECT * FROM Users")
    List<Users>getQueryDisplay();
 
-   @Delete
-    int deleteFamous();
+   @Delete//Delete a user by swiping
+    int deleteFamous(Users pUsers);
 
-
+/*@Delete
+void deleteAddUsers();*/
     @Insert ()
     void insertData(Users ... pUsers);
 }
