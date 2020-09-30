@@ -1,4 +1,4 @@
-package com.oyatech.roomfamouspeople;
+package com.oyatech.roomfamouspeople.dataroom;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;

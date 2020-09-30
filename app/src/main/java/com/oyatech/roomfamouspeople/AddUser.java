@@ -10,6 +10,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.oyatech.roomfamouspeople.dataroom.AppDatabase;
+import com.oyatech.roomfamouspeople.dataroom.Users;
+
 public class AddUser extends AppCompatActivity {
     EditText firstName, secondName, email;
     Button saveUser;

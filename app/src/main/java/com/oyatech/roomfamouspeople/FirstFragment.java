@@ -7,12 +7,13 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
-import java.util.ArrayList;
+import com.oyatech.roomfamouspeople.dataroom.AppDatabase;
+import com.oyatech.roomfamouspeople.dataroom.Users;
+
 import java.util.List;
 
 public class FirstFragment extends Fragment {

@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.ViewHolder;
 
 
+import com.oyatech.roomfamouspeople.dataroom.Users;
+
 import java.util.List;
 
 public class FamousRecycleAdapter extends RecyclerView.Adapter<FamousRecycleAdapter.FamousViewHolder> {

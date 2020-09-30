@@ -1,4 +1,4 @@
-package com.oyatech.roomfamouspeople;
+package com.oyatech.roomfamouspeople.dataroom;
 
 import androidx.room.Dao;
 import androidx.room.Delete;
@@ -13,8 +13,8 @@ public interface UserDao {
     @Query("SELECT * FROM Users Limit 1")
    List<Users>getQueryDisplay();
 
-   /*@Delete
-    int deleteFamous(int row);*/
+   @Delete
+    int deleteFamous();
 
 
     @Insert ()
