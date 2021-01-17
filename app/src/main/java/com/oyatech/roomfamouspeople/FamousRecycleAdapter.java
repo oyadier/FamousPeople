@@ -23,8 +23,10 @@ public class FamousRecycleAdapter extends RecyclerView.Adapter<FamousRecycleAdap
 
     @NonNull
     @Override
-    public FamousRecycleAdapter.FamousViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.users,parent,false);
+    public FamousRecycleAdapter.FamousViewHolder
+    onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.users,parent,false);
 
         return new FamousViewHolder(view);
     }

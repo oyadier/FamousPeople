@@ -4,14 +4,18 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.ItemTouchHelper;
-import androidx.recyclerview.widget.LinearLayoutManager;
+
+import com.oyatech.roomfamouspeople.dataroom.AppDatabase;
+import com.oyatech.roomfamouspeople.dataroom.UserDao;
+import com.oyatech.roomfamouspeople.dataroom.deleteAllAsyncTask;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.room.DatabaseConfiguration;
+import androidx.room.InvalidationTracker;
+import androidx.sqlite.db.SupportSQLiteOpenHelper;
 
 
 import android.view.View;
@@ -27,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     FloatingActionButton fab;
+    public   static  AppDatabase mAppDatabase;
 
     @Override
     protected void onDestroy() {
@@ -69,9 +74,16 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            new deleteAllAsyncTask(mAppDatabase).execute();
             return true;
         }
 
+
+
         return super.onOptionsItemSelected(item);
+    }
+    private void deleteAllUsers()
+    {
+
     }
 }

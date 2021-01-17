@@ -8,6 +8,7 @@ import com.google.android.material.shape.MaterialShapeDrawable;
 
 @Entity
 public class Users {
+    
     @PrimaryKey (autoGenerate = true)
     public int id ;
     @ColumnInfo(name = "first_name")

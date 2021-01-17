@@ -1,5 +1,6 @@
 package com.oyatech.roomfamouspeople;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,17 +14,21 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
-import com.google.android.material.snackbar.Snackbar;
+
+import com.oyatech.roomfamouspeople.dataroom.deleteAsynctask;
 import com.oyatech.roomfamouspeople.dataroom.AppDatabase;
 import com.oyatech.roomfamouspeople.dataroom.Users;
 
 import java.util.List;
 
+import static com.oyatech.roomfamouspeople.MainActivity.mAppDatabase;
+
 public class FirstFragment extends Fragment {
 RecyclerView mRecyclerView;
 private final String TAG = FirstFragment.class.getSimpleName();
     private List<Users> mUser;
-    private AppDatabase mAppDatabase;
+
+    private RecyclerView.Adapter mAdapter;
 
     @Override
     public View onCreateView(
@@ -44,12 +49,12 @@ private final String TAG = FirstFragment.class.getSimpleName();
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         //Creating the adapter
-        final RecyclerView.Adapter adapter = new FamousRecycleAdapter(mUser);
+        mAdapter = new FamousRecycleAdapter(mUser);
         //Setting recycleView adapter
-        mRecyclerView.setAdapter(adapter);
+        mRecyclerView.setAdapter(mAdapter);
 
         swipeToDelete();
-        adapter.notifyDataSetChanged();
+        mAdapter.notifyDataSetChanged();
 
 
 
@@ -72,17 +77,22 @@ private final String TAG = FirstFragment.class.getSimpleName();
                     @Override
                     public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
 
+                        deleteAsynctask mDelete = new deleteAsynctask(mAppDatabase);
                         int position = viewHolder.getAdapterPosition();
 
-                    int userDeleted =    mAppDatabase.mUserDao().deleteFamous(mUser.get(position));
+                     mDelete.execute(mUser.get(position));
 
-                        Toast.makeText(getContext(),"Delete room position " + mUser.get(position).toString(), Toast.LENGTH_SHORT).show();
+                     //  mAppDatabase.mUserDao().deleteFamous(mUser.get(position));
+
+        //                Toast.makeText(getContext(),"Delete room position " + userDeleted, Toast.LENGTH_SHORT).show();
                     }
 
                 });
 
         helper.attachToRecyclerView(mRecyclerView);
     }
+
+
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
